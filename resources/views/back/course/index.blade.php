@@ -51,7 +51,7 @@
                                                 <td class="text-center">
                                                     @foreach($course->precourses as $cours)
                                                         <span class="badge badge-danger">
-                                                        {{$courses->where('id',$cours->pre_course_id)->first()->enname}}</span>
+                                                        {{$cours->enname}}</span>
                                                     @endforeach
                                                 </td>
                                                 <td class="text-center">
