@@ -5,6 +5,7 @@ namespace App\Http\Controllers\back;
 use App\CourseType;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CourseTypeController extends Controller
 {
@@ -21,6 +22,14 @@ class CourseTypeController extends Controller
 
     public function store(Request $request)
     {
+        Validator::make($request->all(), [
+            'faname' => 'required',
+            'enname' => 'required',
+        ], [
+            'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
+        ])->validate();
+
         $coursetype = new CourseType();
         $coursetype->faname = $request->faname;
         $coursetype->enname = $request->enname;
@@ -40,6 +49,14 @@ class CourseTypeController extends Controller
 
     public function update(Request $request, CourseType $courseType)
     {
+        Validator::make($request->all(), [
+            'faname' => 'required',
+            'enname' => 'required',
+        ], [
+            'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
+        ])->validate();
+
         $courseType->faname = $request->faname;
         $courseType->enname = $request->enname;
         $courseType->save();

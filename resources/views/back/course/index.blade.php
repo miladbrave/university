@@ -32,7 +32,6 @@
                                         <thead>
                                         <tr>
                                             <th class="text-center">نام درس</th>
-                                            <th class="text-center">نام درس (لاتین)</th>
                                             <th class="text-center">تعداد واحد</th>
                                             <th class="text-center">نوع درس</th>
                                             <th class="text-center">دسته بندی درس</th>
@@ -44,10 +43,9 @@
                                         @foreach ($courses as $course)
                                             <tr>
                                                 <td class="text-center">{{$course->faname}}</td>
-                                                <td class="text-center">{{$course->enname}}</td>
                                                 <td class="text-center">{{$course->credit}}</td>
-                                                <td class="text-center">{{$course->coursetype}}</td>
-                                                <td class="text-center">{{$course->coursecategory}}</td>
+                                                <td class="text-center">{{$type->where('id',$course->coursetype)->first()->faname}}</td>
+                                                <td class="text-center">{{$category->where('id',$course->coursetype)->first()->faname}}</td>
                                                 <td class="text-center">
                                                     @foreach($course->precourses as $cours)
                                                         <span class="badge badge-danger">

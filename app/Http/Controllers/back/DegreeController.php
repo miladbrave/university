@@ -25,8 +25,10 @@ class DegreeController extends Controller
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
         ])->validate();
 
         $degree = new Degree();
@@ -50,8 +52,10 @@ class DegreeController extends Controller
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
         ])->validate();
 
         $degree->faname = $request->faname;
@@ -63,5 +67,6 @@ class DegreeController extends Controller
     public function destroy(Degree $degree)
     {
         $degree->delete();
+        return back()->with('danger','مقطع تحصیلی با موفقیت حذف شد');
     }
 }

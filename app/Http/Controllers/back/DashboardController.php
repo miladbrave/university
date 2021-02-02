@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers\back;
 
+use App\Cuorse;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Program;
+use App\University;
+use App\User;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('back.dashboard');
+        $university = University::count();
+        $program = Program::count();
+        $courses = Cuorse::count();
+        $users = User::count();
+        return view('back.dashboard',compact('university','program','courses','users'));
     }
+
 }

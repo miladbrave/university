@@ -18,13 +18,18 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group @if($errors->has('faname')) has-error @endif">
-                                            <label>نوع درس (فارسی)</label>
+                                            <label>نوع درس (فارسی)<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
-                                                <input type="text" class="form-control" name="faname"
+                                                <input type="text" class="form-control" name="faname" required
                                                        value="{{old('faname')}}">
                                             </div>
                                         </div>
+                                        @if ($errors->has('faname'))
+                                            <span class="help-block">
+                                                    <span class="text-danger">{{ $errors->first('faname') }}</span>
+                                                </span>
+                                        @endif
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group @if($errors->has('enname')) has-error @endif">

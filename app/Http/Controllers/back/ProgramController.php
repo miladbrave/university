@@ -27,8 +27,10 @@ class ProgramController extends Controller
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
         ])->validate();
 
         $program = new Program();
@@ -60,8 +62,10 @@ class ProgramController extends Controller
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
         ])->validate();
 
         $program->faname = $request->faname;

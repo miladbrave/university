@@ -16,19 +16,19 @@ class FacultyController extends Controller
         return view('back.faculty.index',compact('faculties'));
     }
 
-
     public function create()
     {
         return view('back.faculty.create');
     }
 
-
     public function store(Request $request)
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
         ])->validate();
 
         $faculty = new Faculty();
@@ -55,8 +55,10 @@ class FacultyController extends Controller
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
         ])->validate();
 
         $faculty->faname = $request->faname;

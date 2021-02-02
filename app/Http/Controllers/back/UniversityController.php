@@ -26,7 +26,9 @@ class UniversityController extends Controller
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
             'encity' => 'required',
+            'facity' => 'required',
             'address' => 'required',
             'phone' => 'required|numeric',
             'web' => 'required',
@@ -34,7 +36,9 @@ class UniversityController extends Controller
             'postcode' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
             'encity.required' => 'لطفا شهر لاتین را وارد کنید.',
+            'facity.required' => 'لطفا شهر فارسی را وارد کنید.',
             'address.required' => 'لطفا آدرس را وارد کنید.',
             'phone.required' => 'لطفا شماره تماس را وارد کنید.',
             'phone.numeric' => 'لطفا شماره تماس معتبر وارد کنید.',
@@ -87,7 +91,9 @@ class UniversityController extends Controller
     {
         Validator::make($request->all(), [
             'enname' => 'required',
+            'faname' => 'required',
             'encity' => 'required',
+            'facity' => 'required',
             'address' => 'required',
             'phone' => 'required|numeric',
             'web' => 'required',
@@ -95,7 +101,9 @@ class UniversityController extends Controller
             'postcode' => 'required',
         ], [
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
+            'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
             'encity.required' => 'لطفا شهر لاتین را وارد کنید.',
+            'facity.required' => 'لطفا شهر فارسی را وارد کنید.',
             'address.required' => 'لطفا آدرس را وارد کنید.',
             'phone.required' => 'لطفا شماره تماس را وارد کنید.',
             'phone.numeric' => 'لطفا شماره تماس معتبر وارد کنید.',

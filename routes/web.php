@@ -29,5 +29,10 @@ Route::group(['prefix'=>'panel'], function () {
     Route::resource('course','back\CourseController');
     Route::resource('courseType','back\CourseTypeController');
     Route::resource('courseCategory','back\CourseCategoryController');
+    Route::resource('setting','back\settingController');
     Route::get('photoDelete/{id}','back\UniversityController@photoDelete')->name('photoDelete');
+    Route::get('adminList','back\settingController@adminlist')->name('adminList');
+    Route::get('adminChange','back\settingController@adminchange')->name('adminchange');
+    Route::get('userDestroy','back\settingController@userdestroy')->name('userdestroy');
+
 });

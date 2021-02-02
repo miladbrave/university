@@ -17,9 +17,14 @@ class CreatePhotosTable extends Migration
             $table->id();
             $table->string('path', 255);
             $table->string('original_name', 255);
-            $table->unsignedBigInteger('university_id');
+            $table->unsignedBigInteger('university_id')->nullable()->default(null);
+            $table->unsignedBigInteger('site_id')->nullable()->default(null);
             $table->unsignedbigInteger('user_id');
+
             $table->foreign('university_id')->references('id')->on('universities')
+                                                    ->onUpdate('cascade')
+                                                    ->onDelete('cascade');
+            $table->foreign('site_id')->references('id')->on('settings')
                                                     ->onUpdate('cascade')
                                                     ->onDelete('cascade');
             $table->timestamps();

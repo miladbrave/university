@@ -44,6 +44,13 @@
                 <li><a href="{{route('courseCategory.index')}}"><span class="title">لیست دسته بندی دروس</span></a></li>
             </ul>
         </li>
+        <li class="has-sub">
+            <a href="collapsed-sidebar.html"><i class="fa fa-gears"></i><span class="title">تنظیمات</span></a>
+            <ul class="nav collapse">
+                <li><a href="{{route('adminList')}}"><span class="title">ادمین ها</span></a></li>
+                <li><a href="{{route('setting.index')}}"><span class="title">تنظیمات صفحات</span></a></li>
+            </ul>
+        </li>
 
     </ul>
 </div>

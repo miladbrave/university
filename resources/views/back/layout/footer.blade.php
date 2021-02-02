@@ -19,6 +19,8 @@
 <script src="/back/js/plugins/flot/jquery.flot.time.min.js"></script>
 <script src="/back/js/functions.js"></script>
 <script src="/back/js/plugins/select2/select2.full.min.js"></script>
+<script src="/back/ckeditor/ckeditor.js" type="text/javascript"></script>
+
 
 
 @yield('js')

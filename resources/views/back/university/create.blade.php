@@ -19,13 +19,18 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group @if($errors->has('faname')) has-error @endif">
-                                                <label>نام دانشگاه (فارسی)</label>
+                                                <label>نام دانشگاه (فارسی)<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
                                                     <input type="text" class="form-control" name="faname"
                                                            value="{{old('faname')}}">
                                                 </div>
                                             </div>
+                                            @if ($errors->has('faname'))
+                                                <span class="help-block">
+                                                    <span class="text-danger">{{ $errors->first('faname') }}</span>
+                                                </span>
+                                            @endif
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group @if($errors->has('laname')) has-error @endif">
@@ -44,7 +49,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group @if($errors->has('facity')) has-error @endif">
-                                                <label>شهر (فارسی)</label>
+                                                <label>شهر (فارسی)<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                                     <input type="text" class="form-control" name="facity"
