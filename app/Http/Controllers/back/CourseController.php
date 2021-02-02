@@ -109,13 +109,15 @@ class CourseController extends Controller
         $course->reference = $request->reference;
         $course->save();
 
-        $course->precourses()->delete();
-        foreach ($request->precourse as $precours) {
-            $course->precourses()->updateOrCreate([
-                "cuorse_id" => $course->id,
-                "pre_course_id" => $precours,
-            ]);
-        }
+        $course->precourses()->detach();
+        $course->precourses()->attach($request->precourse);
+//        $course->precourses()->delete();
+//        foreach ($request->precourse as $precours) {
+//            $course->precourses()->updateOrCreate([
+//                "cuorse_id" => $course->id,
+//                "pre_course_id" => $precours,
+//            ]);
+//        }
 
         return redirect()->route('course.index')->with('success','تغییرات ثبت شدند.');
     }

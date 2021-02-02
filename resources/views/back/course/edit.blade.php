@@ -109,7 +109,7 @@
                                                 <select name="precourse[]" class="select2 form-control" multiple>
                                                     @foreach($courses as $cours)
                                                         <option
-                                                            @if($cours->id == isset($course->precourses->where('pre_course_id',$cours->id)->first()->pre_course_id)) selected @endif
+                                                            @if($course->precourses->contains($cours->id)) selected @endif
                                                             value="{{$cours->id}}">{{$cours->enname}}
                                                         </option>
                                                     @endforeach
