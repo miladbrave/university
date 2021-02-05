@@ -58,16 +58,17 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group @if($errors->has('guide')) has-error @endif">
                                         <label>متن راهنما</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
-                                            <input type="text" class="form-control" name="guide"
-                                                   @if($setting) value="{{$setting->guide}}" @endif>
+                                            <textarea id="textareaDes3" name="guide"
+                                                      class="editor form-control">  @if($setting) {{$setting->guide}} @endif</textarea>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <hr>
                             <div class="row">
@@ -162,7 +163,7 @@
                                     <div class="form-group @if($errors->has('telegram')) has-error @endif">
                                         <label>تلگرام</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class="fas fa-file-text"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-flag"></i></span>
                                             <input type="text" class="form-control" name="telegram"
                                                    @if($setting) value="{{$setting->telegram}}" @endif>
                                         </div>
@@ -200,6 +201,38 @@
                                 </div>
                             </div>
                             <hr>
+
+                            <div class="col-md-4">
+                                <div class="form-group @if($errors->has('dirver')) has-error @endif">
+                                    <label>درایور درگاه</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-gear"></i></span>
+                                        <input type="text" class="form-control" name="dirver"
+                                               @if($setting) value="{{$setting->gatedriver}}" @endif>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group @if($errors->has('mode')) has-error @endif">
+                                    <label>حالت درگاه</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-sort"></i></span>
+                                        <input type="text" class="form-control" name="mode"
+                                               @if($setting) value="{{$setting->gatemode}}" @endif>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group text-left @if($errors->has('merchand')) has-error @endif">
+                                    <label>Merchand Id</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-info"></i></span>
+                                        <input type="text" class="form-control" name="merchand"
+                                               @if($setting) value="{{$setting->gatemerchand}}" @endif>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
                             <button class="btn btn-success" type="submit">ثبت مشخصات</button>
                         </form>
                     </div>
@@ -225,6 +258,20 @@
             language: 'fa',
         })
         CKEDITOR.replace('textareaDes2', {
+            toolbarGroups: [
+                {
+                    "name": "basicstyles", "groups": ["basicstyles"]
+                },
+                {"name": "links", "groups": ["links"]},
+                {"name": "paragraph", "groups": ["list", "blocks"]},
+                {"name": "document", "groups": ["mode"]},
+                {"name": "insert", "groups": ["insert"]},
+                {"name": "styles", "groups": ["styles"]},
+                {"name": "about", "groups": ["about"]}
+            ],
+            language: 'fa',
+        })
+        CKEDITOR.replace('textareaDes3', {
             toolbarGroups: [
                 {
                     "name": "basicstyles", "groups": ["basicstyles"]

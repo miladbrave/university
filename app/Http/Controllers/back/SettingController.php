@@ -57,6 +57,9 @@ class SettingController extends Controller
             $setting->whats = $request->whats;
             $setting->sitename = $request->sitename;
             $setting->sitedes = $request->sitedes;
+            $setting->gatedriver = $request->dirver;
+            $setting->gatemode = $request->mode;
+            $setting->gatemerchand = $request->merchand;
             $setting->save();
 
             if ($request->file('file')) {
@@ -86,6 +89,9 @@ class SettingController extends Controller
             $setting->whats = $request->whats;
             $setting->sitename = $request->sitename;
             $setting->sitedes = $request->sitedes;
+            $setting->gatedriver = $request->dirver;
+            $setting->gatemode = $request->mode;
+            $setting->gatemerchand = $request->merchand;
             $setting->save();
 
             if ($request->file('file')) {

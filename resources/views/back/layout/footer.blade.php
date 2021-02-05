@@ -20,7 +20,7 @@
 <script src="/back/js/functions.js"></script>
 <script src="/back/js/plugins/select2/select2.full.min.js"></script>
 <script src="/back/ckeditor/ckeditor.js" type="text/javascript"></script>
-
+<script type="text/javascript" charset="utf8" src="/back/DataTables/datatables.js"></script>
 
 
 @yield('js')

@@ -16,9 +16,9 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Cuorse::latest()->paginate(20);
-        $type =CourseType::latest()->get();
-        $category =CuorseCategory::latest()->get();
-        return view('back.course.index',compact('courses','type','category'));
+        $type = CourseType::latest()->get();
+        $category = CuorseCategory::latest()->get();
+        return view('back.course.index', compact('courses', 'type', 'category'));
     }
 
     public function create()
@@ -26,7 +26,7 @@ class CourseController extends Controller
         $courseTypes = CourseType::latest()->get();
         $courseCategories = CuorseCategory::latest()->get();
         $courses = Cuorse::latest()->get();
-        return view('back.course.create',compact('courseCategories','courseTypes','courses'));
+        return view('back.course.create', compact('courseCategories', 'courseTypes', 'courses'));
     }
 
     public function store(Request $request)
@@ -36,7 +36,6 @@ class CourseController extends Controller
             'enname' => 'required',
             'credit' => 'required',
             'reference' => 'required',
-            'precourse' => 'required',
             'description' => 'required',
             'detail' => 'required',
         ], [
@@ -44,7 +43,6 @@ class CourseController extends Controller
             'enname.required' => 'لطفا عنوان لاتین را وارد کنید.',
             'credit.required' => 'لطفا تعداد واحد را وارد کنید.',
             'reference.required' => 'لطفا منابع درسی را وارد کنید.',
-            'precourse.required' => 'لطفا دروس پیشنیاز را وارد کنید.',
             'description.required' => 'لطفا توضیح را وارد کنید.',
             'detail.required' => 'لطفا جزییات را وارد کنید.',
 
@@ -61,14 +59,16 @@ class CourseController extends Controller
         $course->reference = $request->reference;
         $course->save();
 
-        foreach ($request->precourse as $precours) {
+        if ($request->precourse) {
+            foreach ($request->precourse as $precours) {
                 PreCourse::create([
                     "cuorse_id" => $course->id,
                     "pre_course_id" => $precours,
                 ]);
+            }
         }
 
-        return redirect()->route('course.index')->with('success','درس جدید ثبت شد');
+        return redirect()->route('course.index')->with('success', 'درس جدید ثبت شد');
     }
 
     public function show(Cuorse $cuorse)
@@ -81,7 +81,7 @@ class CourseController extends Controller
         $courseTypes = CourseType::latest()->get();
         $courseCategories = CuorseCategory::latest()->get();
         $courses = Cuorse::latest()->get();
-        return view('back.course.edit',compact('courseCategories','courseTypes','courses','course'));
+        return view('back.course.edit', compact('courseCategories', 'courseTypes', 'courses', 'course'));
     }
 
     public function update(Request $request, Cuorse $course)
@@ -91,7 +91,6 @@ class CourseController extends Controller
             'faname' => 'required',
             'credit' => 'required',
             'reference' => 'required',
-            'precourse' => 'required',
             'description' => 'required',
             'detail' => 'required',
         ], [
@@ -99,7 +98,6 @@ class CourseController extends Controller
             'faname.required' => 'لطفا عنوان فارسی را وارد کنید.',
             'credit.required' => 'لطفا تعداد واحد را وارد کنید.',
             'reference.required' => 'لطفا منابع درسی را وارد کنید.',
-            'precourse.required' => 'لطفا دروس پیشنیاز را وارد کنید.',
             'description.required' => 'لطفا توضیح را وارد کنید.',
             'detail.required' => 'لطفا جزییات را وارد کنید.',
 
@@ -115,15 +113,15 @@ class CourseController extends Controller
         $course->reference = $request->reference;
         $course->save();
 
-        $course->precourses()->detach();
-        $course->precourses()->attach($request->precourse);
+            $course->precourses()->detach();
+            $course->precourses()->attach($request->precourse);
 
-        return redirect()->route('course.index')->with('success','تغییرات ثبت شدند.');
+        return redirect()->route('course.index')->with('success', 'تغییرات ثبت شدند.');
     }
 
     public function destroy(Cuorse $course)
     {
         $course->delete();
-        return back()->with('danger','درس مورد نظر حذف شد.');
+        return back()->with('danger', 'درس مورد نظر حذف شد.');
     }
 }

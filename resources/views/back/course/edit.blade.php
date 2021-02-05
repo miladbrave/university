@@ -19,7 +19,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group @if($errors->has('faname')) has-error @endif">
                                                 <label>نام درس (فارسی)<span class="text-danger">*</span></label>
                                                 <div class="input-group">
@@ -34,7 +34,7 @@
                                                 </span>
                                             @endif
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group @if($errors->has('enname')) has-error @endif">
                                                 <label>نام درس (لاتین)<span class="text-danger">*</span></label>
                                                 <div class="input-group">
@@ -49,7 +49,7 @@
                                                 </span>
                                             @endif
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group @if($errors->has('credit')) has-error @endif">
                                                 <label> تعداد واحد<span class="text-danger">*</span></label>
                                                 <div class="input-group">
@@ -62,23 +62,6 @@
                                             @if ($errors->has('credit'))
                                                 <span class="help-block">
                                                     <span class="text-danger">{{ $errors->first('credit') }}</span>
-                                                </span>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group @if($errors->has('reference')) has-error @endif">
-                                                <label>منابع درس (لاتین)<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i
-                                                            class="fa fa-map-marker"></i></span>
-                                                    <input type="text" class="form-control" name="reference"
-                                                           required
-                                                           value="{{$course->reference}}">
-                                                </div>
-                                            </div>
-                                            @if ($errors->has('reference'))
-                                                <span class="help-block">
-                                                    <span class="text-danger">{{ $errors->first('reference') }}</span>
                                                 </span>
                                             @endif
                                         </div>
@@ -115,7 +98,7 @@
                                                     @foreach($courses as $cours)
                                                         <option
                                                             @if($course->precourses->contains($cours->id)) selected @endif
-                                                            value="{{$cours->id}}">{{$cours->enname}}
+                                                        value="{{$cours->id}}">{{$cours->enname}}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -127,15 +110,26 @@
                                             @endif
                                         </div>
                                         <div class="col-md-6">
+                                            <div class="form-group @if($errors->has('reference')) has-error @endif">
+                                                <label>منابع درس (لاتین)<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <textarea id="textareaDes" name="reference" required
+                                                              class="editor form-control">{{$course->reference}}</textarea>
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('reference'))
+                                                <span class="help-block">
+                                                    <span class="text-danger">{{ $errors->first('reference') }}</span>
+                                                </span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-6">
                                             <div
                                                 class="form-group @if($errors->has('description')) has-error @endif">
                                                 <label>توضیحات<span class="text-danger">*</span></label>
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><i
-                                                            class="fa fa-file-text"></i></span>
                                                     <textarea type="text" class="form-control" name="description"
-                                                              required
-                                                    >{{$course->description}}</textarea>
+                                                              id="textareaDes2" required>{{$course->description}}</textarea>
                                                 </div>
                                             </div>
                                             @if ($errors->has('description'))
@@ -148,10 +142,9 @@
                                             <div class="form-group @if($errors->has('detail')) has-error @endif">
                                                 <label>جزییات<span class="text-danger">*</span></label>
                                                 <div class="input-group">
-                                                        <span class="input-group-addon"><i
-                                                                class="fa fa-tasks"></i></span>
-                                                    <input type="text" class="form-control" name="detail" required
-                                                           value="{{$course->detail}}">
+                                                    <textarea type="text" class="form-control" name="detail"
+                                                              id="textareaDes3"
+                                                              required>{{$course->detail}}</textarea>
                                                 </div>
                                             </div>
                                             @if ($errors->has('detail'))
@@ -171,5 +164,51 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        CKEDITOR.replace('textareaDes', {
+            toolbarGroups: [
+                {
+                    "name": "basicstyles", "groups": ["basicstyles"]
+                },
+                {"name": "links", "groups": ["links"]},
+                {"name": "paragraph", "groups": ["list", "blocks"]},
+                {"name": "document", "groups": ["mode"]},
+                {"name": "insert", "groups": ["insert"]},
+                {"name": "styles", "groups": ["styles"]},
+                {"name": "about", "groups": ["about"]}
+            ],
+            language: 'fa',
+        })
+        CKEDITOR.replace('textareaDes2', {
+            toolbarGroups: [
+                {
+                    "name": "basicstyles", "groups": ["basicstyles"]
+                },
+                {"name": "links", "groups": ["links"]},
+                {"name": "paragraph", "groups": ["list", "blocks"]},
+                {"name": "document", "groups": ["mode"]},
+                {"name": "insert", "groups": ["insert"]},
+                {"name": "styles", "groups": ["styles"]},
+                {"name": "about", "groups": ["about"]}
+            ],
+            language: 'fa',
+        })
+        CKEDITOR.replace('textareaDes3', {
+            toolbarGroups: [
+                {
+                    "name": "basicstyles", "groups": ["basicstyles"]
+                },
+                {"name": "links", "groups": ["links"]},
+                {"name": "paragraph", "groups": ["list", "blocks"]},
+                {"name": "document", "groups": ["mode"]},
+                {"name": "insert", "groups": ["insert"]},
+                {"name": "styles", "groups": ["styles"]},
+                {"name": "about", "groups": ["about"]}
+            ],
+            language: 'fa',
+        })
+    </script>
 @endsection
 

@@ -18,7 +18,7 @@ class CreateSettingsTable extends Migration
             $table->unsignedBigInteger('word_price')->nullable()->default(null);
             $table->unsignedBigInteger('pdf_price')->nullable()->default(null);
             $table->string('titlefile',255)->nullable()->default(null);
-            $table->string('guide',255)->nullable()->default(null);
+            $table->text('guide')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
             $table->text('description2')->nullable()->default(null);
             $table->string('time',100)->nullable()->default(null);
@@ -28,6 +28,9 @@ class CreateSettingsTable extends Migration
             $table->string('whats',200)->nullable()->default(null);
             $table->string('sitename',50)->nullable()->default(null);
             $table->string('sitedes',255)->nullable()->default(null);
+            $table->string('gatedriver',100)->nullable()->default(null);
+            $table->string('gatemode',50)->nullable()->default(null);
+            $table->string('gatemerchand',255)->nullable()->default(null);
             $table->timestamps();
         });
     }

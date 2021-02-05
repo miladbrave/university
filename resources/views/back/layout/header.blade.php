@@ -18,6 +18,7 @@
     <link href="/back/css/bootstrap-rtl.min.css" rel="stylesheet">
     <link href="/back/css/mouldifi-rtl-core.css" rel="stylesheet">
     <link href="/back/css/plugins/select2/select2.css" rel="stylesheet">
+    <link href="/back/DataTables/datatables.css" rel="stylesheet" type="text/css">
 
     <script src="/back/js/html5shiv.min.js"></script>
     <script src="/back/js/respond.min.js"></script>
